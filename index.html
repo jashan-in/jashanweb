@@ -10,8 +10,8 @@
             margin: 0;
             height: 100vh;
             display: flex;
-            justify-content: flex-end;
-            align-items: center;
+            justify-content: center; /* Center content horizontally */
+            align-items: center; /* Center content vertically */
             background: url('jashan.jpg') no-repeat center center fixed;
             background-size: cover;
             position: relative;
@@ -34,7 +34,7 @@
             color: #fff;
             padding: 20px;
             width: 300px;
-            margin-right: 215px;
+            margin: 0 auto;
             text-align: center;
             border-radius: 8px; 
             box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
@@ -42,16 +42,24 @@
             z-index: 1;
         }
 
+        /* Mobile-specific adjustments */
+        @media (max-width: 768px) {
+            .content-box {
+                margin: 20px auto; /* Add some top margin for spacing */
+                width: 90%; /* Make the box responsive on small screens */
+            }
+        }
+
         h1 {
             font-size: 2rem;
             margin: 0;
-            transition: color 0.3s ease, transform 0.3s ease; /* Add transition for hover effect */
+            transition: color 0.3s ease, transform 0.3s ease;
         }
 
         h2 {
             margin: 15px 0;
             font-size: 1.2rem;
-            transition: color 0.3s ease, transform 0.3s ease; /* Add transition for hover effect */
+            transition: color 0.3s ease, transform 0.3s ease;
         }
 
         a {
@@ -61,7 +69,7 @@
             display: flex;
             align-items: center; 
             gap: 10px; 
-            transition: color 0.3s ease, transform 0.3s ease; /* Add transition for text and logo */
+            transition: color 0.3s ease, transform 0.3s ease;
         }
 
         a img {
@@ -71,23 +79,22 @@
         }
 
         a:hover {
-            color: #FFD700; /* Gold color on hover for both text and logo */
+            color: #FFD700;
         }
 
         a:hover img {
-            transform: scale(1.2); /* Scale the logo */
+            transform: scale(1.2);
         }
 
         a:hover span {
-            color: #FFD700; /* Change the color of the text to gold on hover */
-            transform: scale(1.2); /* Scale the text on hover */
+            color: #FFD700;
+            transform: scale(1.2);
         }
 
         a span {
-            transition: transform 0.3s ease; /* Ensure smooth text scaling */
+            transition: transform 0.3s ease;
         }
 
-        /* Heart Animation */
         .heart {
             position: absolute;
             width: 50px;
@@ -148,7 +155,7 @@
         }
 
         #music-toggle:hover {
-            color: #FFD700; /* Gold on hover */
+            color: #FFD700;
         }
     </style>
 </head>
@@ -168,19 +175,16 @@
         </h2>
     </div>
 
-    <!-- Background Music -->
     <audio id="background-music" autoplay loop>
         <source src="wavy.mp3" type="audio/mpeg">
         Your browser does not support the audio element.
     </audio>
 
-    <!-- Music Controls -->
     <div class="music-controls">
         <button id="music-toggle">Pause Music</button>
     </div>
 
     <script>
-        // Heart animation on click
         document.body.addEventListener('click', function(e) {
             if (!e.target.closest('.content-box')) {
                 let heart = document.createElement('div');
@@ -192,7 +196,6 @@
             }
         });
 
-        // Music toggle functionality
         const music = document.getElementById('background-music');
         const musicToggle = document.getElementById('music-toggle');
 
